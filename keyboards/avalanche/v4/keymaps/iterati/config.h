@@ -1,0 +1,35 @@
+#pragma once
+
+#undef RGBLIGHT_EFFECT_ALTERNATING
+#undef RGBLIGHT_EFFECT_RGB_TEST
+#undef RGBLIGHT_EFFECT_STATIC_GRADIENT
+#undef RGBLIGHT_EFFECT_RAINBOW_MOOD
+#undef RGBLIGHT_EFFECT_BREATHING
+#undef RGBLIGHT_EFFECT_KNIGHT
+#undef RGBLIGHT_EFFECT_SNAKE
+#undef RGBLIGHT_EFFECT_CHRISTMAS
+
+#ifdef OLED_FONT_H
+#    undef OLED_FONT_H
+#endif
+#define OLED_FONT_H "iterati_font.h"
+
+#ifdef OLED_FONT_END
+#    undef OLED_FONT_END
+#endif
+#define OLED_FONT_END 191
+
+#ifdef OLED_FONT_WIDTH
+#    undef OLED_FONT_WIDTH
+#endif
+#define OLED_FONT_WIDTH 8
+
+#ifdef OLED_TIMEOUT
+#    undef OLED_TIMEOUT
+#endif
+#define OLED_TIMEOUT 3000
+
+#define OLED_FADE_OUT true
+#define OLED_FADE_OUT_INTERVAL 0
+
+#define MASTER_RIGHT
