@@ -8,6 +8,8 @@ qmk flash -kb avalanche/v4 -km default
 
 #include QMK_KEYBOARD_H
 
+const uint8_t RGBLED_RAINBOW_SWIRL_INTERVALS[] PROGMEM = {200, 50, 10};
+
 /* ************** *
       Defines
  * ************** */
@@ -84,9 +86,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    /* 2 - right hand */
    [_MOUSE] = LAYOUT(
                   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                  KC_NO,   QK_BOOT, KC_NO,   KC_NO,   KC_NO,   KC_WREF,                                     MY_REDO, MY_CUT,  MY_COPY, MY_PSTE, MY_UNDO, KC_NO,
-         KC_NO,   KC_NO,   KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_WSCH,                                     KC_MS_L, KC_MS_D, KC_MS_R, KC_MS_U, KC_WBAK, KC_NO,   KC_NO,
-                  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_WSTP, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_WFWD, KC_NO,
+                  KC_NO,   QK_BOOT, KC_NO,   KC_NO,   KC_NO,   KC_NO,                                       KC_NO,   KC_WH_D, KC_MS_U, KC_WH_U, KC_WREF, KC_NO,
+         KC_NO,   KC_NO,   KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO,                                       KC_NO,   KC_MS_L, KC_MS_D, KC_MS_R, KC_WBAK, KC_NO,   KC_NO,
+                  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                              KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_BTN2, KC_BTN1, KC_BTN3, KC_TRNS),
 
    /* 3 - right hand */
@@ -102,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
                   KC_NO,   QK_BOOT, KC_NO,   KC_NO,   KC_NO,   KC_NO,                                       RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, KC_NO,
          KC_NO,   KC_NO,   KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO,                                       KC_BRIU, KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, KC_NO,   KC_NO,
-                  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  KC_BRID, RGB_RMOD, RGB_HUD, RGB_SAD, RGB_VAD, KC_NO,
+                  KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   RGB_SPI, KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                              KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_MSTP, KC_MPLY, KC_MUTE, KC_TRNS),
 
    /* 5 - left hand */
@@ -206,10 +208,10 @@ static const char PROGMEM logo_slave[] = {
   0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5a, 0x5b, 0x5c, 0x5d, 0x5e, 0x5f,
   0x60, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69, 0x6a, 0x6b, 0x6c, 0x6d, 0x6e, 0x6f,
   0x70, 0x71, 0x72, 0x73, 0x74, 0x75, 0x76, 0x77, 0x78, 0x79, 0x7a, 0x7b, 0x7c, 0x7d, 0x7e, 0x7f,
-  0x0c, 0x1b, 0x1b, 0x1b, 0x1b, 0x1b, 0x1b, 0x1b, 0x1b, 0x1b, 0x1b, 0x1b, 0x1b, 0x1b, 0x1b, 0x0e,
-  0x1d, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0f,
-  0x1d, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0f,
-  0x1c, 0x1e, 0x1e, 0x1e, 0x1e, 0x1e, 0x1e, 0x1e, 0x1e, 0x1e, 0x1e, 0x1e, 0x1e, 0x1e, 0x1e, 0x1f,
+  0x0e, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x10, 0x0f,
+  0x1c, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x1d,
+  0x1c, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x0b, 0x1d,
+  0x1e, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x1f,
   0x00
 };
 
