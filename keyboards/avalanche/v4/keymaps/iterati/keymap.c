@@ -29,6 +29,7 @@ enum my_keycodes {
   TOG_LO = SAFE_RANGE,
   TOG_OS,
   TOG_GM,
+  TOG_AR,
   MY_COPY,
   MY_PSTE,
   MY_CUT,
@@ -64,6 +65,16 @@ enum my_keycodes {
 #define I_LALT LALT_T(KC_I)
 #define O_LGUI LGUI_T(KC_O)
 
+// one-handed nav - num layer
+#define DN_LSFT LSFT_T(KC_DOWN)
+#define UP_LCTL LCTL_T(KC_UP)
+#define RI_LALT LALT_T(KC_RGHT)
+
+// one-handed nav - nav layer
+#define LE_LALT LALT_T(KC_LEFT)
+#define DN_LCTL LCTL_T(KC_DOWN)
+#define RI_LSFT LSFT_T(KC_RGHT)
+
 /* ************** *
        Layout
  * ************** */
@@ -72,25 +83,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    /* 0 - base layer */
    [_COLEMAK_DH] = LAYOUT(
                   KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
-                  KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                                        KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_QUOT,
-         KC_NO,   KC_CAPS, A_LGUI,  R_LALT,  S_LCTL,  T_LSFT,  KC_G,                                        KC_M,    N_LSFT,  E_LCTL,  I_LALT,  O_LGUI,  KC_ENT,  KC_NO,
-                  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    KC_LCBR, KC_LBRC, KC_RBRC, KC_RCBR, KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-                                             KC_MUTE, LAD_ESC, LNA_SPC, LMO_TAB, KC_LPRN, KC_RPRN, LSY_ENT, LNU_SPC, LFN_BSP, KC_ESC),
+                  KC_LPRN, KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                                        KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_LBRC,
+         KC_NO,   KC_DQUO, A_LGUI,  R_LALT,  S_LCTL,  T_LSFT,  KC_G,                                        KC_M,    N_LSFT,  E_LCTL,  I_LALT,  O_LGUI,  KC_QUOT, KC_NO,
+                  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    MY_CUT,  MY_PSTE, MY_UNDO, MY_REDO, KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+                                             KC_MUTE, LAD_ESC, LNA_SPC, LMO_TAB, KC_LPRN, KC_RPRN, LSY_ENT, LNU_SPC, LFN_BSP, TOG_AR),
    /* 1 - base layer */
    [_QWERTY] = LAYOUT(
                   KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
-                  KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                        KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_QUOT,
-         KC_NO,   KC_CAPS, A_LGUI,  S_LALT,  D_LCTL,  F_LSFT,  KC_G,                                        KC_H,    J_LSFT,  K_LCTL,  L_LALT,  SC_LGUI, KC_ENT,  KC_NO,
-                  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LCBR, KC_LBRC, KC_RBRC, KC_RCBR, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-                                             KC_MUTE, LAD_ESC, LNA_SPC, LMO_TAB, KC_LPRN, KC_RPRN, LSY_ENT, LNU_SPC, LFN_BSP, KC_ESC),
+                  KC_LPRN, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                        KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
+         KC_NO,   KC_DQUO, A_LGUI,  S_LALT,  D_LCTL,  F_LSFT,  KC_G,                                        KC_H,    J_LSFT,  K_LCTL,  L_LALT,  SC_LGUI, KC_QUOT, KC_NO,
+                  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    MY_CUT,  MY_PSTE, MY_UNDO, MY_REDO, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
+                                             KC_MUTE, LAD_ESC, LNA_SPC, LMO_TAB, KC_LPRN, KC_RPRN, LSY_ENT, LNU_SPC, LFN_BSP, TOG_AR),
 
    /* 2 - gaming layer */
    [_GAMING] = LAYOUT(
                   KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
                   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                        KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_DEL,
          KC_NO,   KC_LSFT, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                                        KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_RSFT,  KC_NO,
-                  KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_LCBR, TOG_GM,  TOG_GM,  KC_RCBR, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RCTL,
-                                             KC_MUTE, KC_ESC,  KC_SPC,  KC_TAB,  KC_LPRN, KC_RPRN, KC_ENT,  KC_SPC,  LFN_BSP, KC_ESC),
+                  KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    MY_CUT,  MY_PSTE, MY_UNDO, MY_REDO, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RCTL,
+                                             KC_MUTE, KC_ESC,  KC_SPC,  KC_TAB,  KC_LPRN, KC_RPRN, KC_ENT,  KC_SPC,  LFN_BSP, TOG_AR),
 
    /* 3 - right hand */
    [_MOUSE] = LAYOUT(
@@ -103,8 +114,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    /* 4 - right hand */
    [_NAV] = LAYOUT(
                   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                  KC_NO,   QK_BOOT, KC_NO,   KC_NO,   KC_NO,   KC_WREF,                                     MY_REDO, MY_CUT,  MY_COPY, MY_PSTE, MY_UNDO, KC_NO,
-         KC_NO,   KC_NO,   KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_NO,                                       KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_CAPS, KC_NO,   KC_NO,
+                  KC_NO,   QK_BOOT, KC_NO,   KC_UP,   KC_NO,   KC_WREF,                                     MY_REDO, MY_CUT,  MY_COPY, MY_PSTE, MY_UNDO, KC_NO,
+         KC_NO,   KC_NO,   KC_LGUI, LE_LALT, DN_LCTL, RI_LSFT, KC_NO,                                       KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_CAPS, KC_NO,   KC_NO,
                   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_DEL,  KC_NO,
                                              KC_TRNS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_ENT,  KC_SPC,  KC_BSPC, KC_TRNS),
 
@@ -127,9 +138,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    /* 7 - left hand */
    [_NUM] = LAYOUT(
                   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,                                       KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                  KC_NO,   KC_LBRC, KC_7,    KC_8,    KC_9,    KC_RBRC,                                     KC_NO,   KC_NO,   KC_NO,   KC_NO,   QK_BOOT, KC_NO,
-         KC_NO,   KC_NO,   KC_SCLN, KC_4,    KC_5,    KC_6,    KC_EQL,                                      KC_NO,   KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI, KC_NO,   KC_NO,
-                  KC_NO,   KC_GRV,  KC_1,    KC_2,    KC_3,    KC_BSLS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+                  KC_NO,   KC_LBRC, KC_7,    KC_8,    KC_9,    KC_RBRC,                                     MY_REDO, MY_CUT,  MY_COPY, MY_PSTE, MY_UNDO, KC_NO,
+         KC_NO,   KC_NO,   KC_SCLN, KC_4,    KC_5,    KC_6,    KC_EQL,                                      KC_LEFT, DN_LSFT, UP_LCTL, RI_LALT, KC_LGUI, KC_NO,   KC_NO,
+                  KC_NO,   KC_GRV,  KC_1,    KC_2,    KC_3,    KC_BSLS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_NO,   KC_NO,
                                              KC_TRNS, KC_DOT,  KC_0,    KC_MINS, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_TRNS),
 
    /* 8  - left hand */
@@ -148,6 +159,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 bool is_qwerty = false;
 bool is_gaming = false;
 bool is_mac = true;
+bool is_arrow = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
@@ -178,6 +190,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             default_layer_set(1UL << _COLEMAK_DH);
           }
         }
+      }
+      return false;
+    case TOG_AR:
+      if (record->event.pressed) {
+        is_arrow = !is_arrow;
       }
       return false;
     case MY_COPY:
@@ -218,40 +235,59 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 /* ************** *
     OLED Screen
  * ************** */
-static const char PROGMEM logo_header[] = {
+static const char PROGMEM logo_header_1[] = {
   0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
   0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2a, 0x2b, 0x2c, 0x2d, 0x2e, 0x2f,
   0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3a, 0x3b, 0x3c, 0x3d, 0x3e, 0x3f,
-  0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f,
   0x00
 };
 
+static const char PROGMEM logo_header_2[] = {
+  0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4a, 0x4b, 0x4c, 0x4d, 0x4e, 0x4f,
+  0x00
+};
+
+static const char PROGMEM logo_header_slave[] = {
+  0x40, 0x41,
+  0x00,
+};
+
+static const char PROGMEM logo_header_pgupdn[] = {
+  0xb8, 0xb9,
+  0x00,
+};
+
+static const char PROGMEM logo_header_arrow[] = {
+  0xba, 0xbb,
+  0x00,
+};
+
 static const char PROGMEM logo_slave[] = {
-  0xb0, 0xb1, 0xb1, 0xb1, 0xb1, 0xb1, 0xb1, 0xb1, 0xb1, 0xb1, 0xb1, 0xb1, 0xb1, 0xb1, 0xb1, 0xb2,
-  0xb6, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb8,
-  0xb6, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb7, 0xb8,
-  0xb3, 0xb4, 0xb4, 0xb4, 0xb4, 0xb4, 0xb4, 0xb4, 0xb4, 0xb4, 0xb4, 0xb4, 0xb4, 0xb4, 0xb4, 0xb5,
+  0x96, 0x97, 0x97, 0x97, 0x97, 0x97, 0x97, 0x97, 0x97, 0x97, 0x97, 0x97, 0x97, 0x97, 0x97, 0x98,
+  0x99, 0x01, 0x01, 0x01, 0x01, 0x9a, 0x9b, 0x9c, 0x9d, 0x9e, 0x9f, 0x01, 0x01, 0x01, 0x01, 0xa9,
+  0x99, 0x01, 0x01, 0x01, 0x01, 0xaa, 0xab, 0xac, 0xad, 0xae, 0xaf, 0x01, 0x01, 0x01, 0x01, 0xa9,
+  0xa6, 0xa7, 0xa7, 0xa7, 0xa7, 0xa7, 0xa7, 0xa7, 0xa7, 0xa7, 0xa7, 0xa7, 0xa7, 0xa7, 0xa7, 0xa8,
   0x00
 };
 
 static const char PROGMEM logo_master_t[] = {
-  0x96, 0x97, 0x98, 0x99, 0x98, 0x99, 0x98, 0x99, 0x98, 0x99, 0x98, 0x99, 0x98, 0x99, 0x97, 0x9a,
+  0x96, 0x97, 0xb0, 0xb1, 0xb0, 0xb1, 0xb0, 0xb1, 0xb0, 0xb1, 0xb0, 0xb1, 0xb0, 0xb1, 0x97, 0x98,
   0x00
 };
 
 static const char PROGMEM logo_master_b[] = {
-  0xa6, 0xa7, 0xa8, 0xa9, 0xa8, 0xa9, 0xa8, 0xa9, 0xa8, 0xa9, 0xa8, 0xa9, 0xa8, 0xa9, 0xa7, 0xaa,
+  0xa6, 0xa7, 0xb2, 0xb3, 0xb2, 0xb3, 0xb2, 0xb3, 0xb2, 0xb3, 0xb2, 0xb3, 0xb2, 0xb3, 0xa7, 0xa8,
   0x00
 };
 
 static const char PROGMEM logo_os_1[][5] = {
-  {0x9b, 0x9c, 0x92, 0x93, 0},
-  {0x9b, 0x9c, 0x94, 0x95, 0},
+  {0x99, 0xb4, 0x92, 0x93, 0},
+  {0x99, 0xb4, 0x94, 0x95, 0},
 };
 
 static const char PROGMEM logo_os_2[][5] = {
-  {0x9b, 0xab, 0xa2, 0xa3, 0},
-  {0x9b, 0xab, 0xa4, 0xa5, 0},
+  {0x99, 0xb5, 0xa2, 0xa3, 0},
+  {0x99, 0xb5, 0xa4, 0xa5, 0},
 };
 
 static const char PROGMEM logo_la_1[][3] = {
@@ -309,23 +345,25 @@ static const char PROGMEM logo_mo_alt_2[][3] = {
 };
 
 static const char PROGMEM logo_mo_gui_1[][5] = {
-  {0x5c, 0x5d, 0x9d, 0x9e, 0},
-  {0x5e, 0x5f, 0x9d, 0x9e, 0}
+  {0x5c, 0x5d, 0xb6, 0xa9, 0},
+  {0x5e, 0x5f, 0xb6, 0xa9, 0}
 };
 
 static const char PROGMEM logo_mo_gui_2[][5] = {
-  {0x6c, 0x6d, 0xac, 0x9e, 0},
-  {0x6e, 0x6f, 0xac, 0x9e, 0}
+  {0x6c, 0x6d, 0xb7, 0xa9, 0},
+  {0x6e, 0x6f, 0xb7, 0xa9, 0}
 };
 
 bool oled_task_user(void) {
-  oled_write_P(logo_header, false);
+  oled_write_P(logo_header_1, false);
   if (is_keyboard_master()) {
     const uint8_t mod = get_mods();
     uint8_t lay = get_highest_layer(layer_state);
          if (is_gaming) lay = 2;
     else if (is_qwerty) lay = 1;
 
+    oled_write_P((is_arrow) ? logo_header_arrow : logo_header_pgupdn, false);
+    oled_write_P(logo_header_2, false);
     oled_write_P(logo_master_t, false);
     oled_write_P(logo_os_1[(is_mac) ? 0 : 1], false);
     oled_write_P(logo_la_1[lay], false);
@@ -341,8 +379,27 @@ bool oled_task_user(void) {
     oled_write_P(logo_mo_gui_2[(mod & MOD_MASK_GUI) ? 1 : 0], false);
     oled_write_P(logo_master_b, false);
   } else {
+    oled_write_P(logo_header_slave, false);
+    oled_write_P(logo_header_2, false);
     oled_write_P(logo_slave, false);
   }
 
   return false;
+}
+
+bool encoder_update_user(uint8_t index, bool clockwise) {
+    if (index == 0) {
+        if (clockwise) {
+            tap_code_delay(KC_VOLU, 10);
+        } else {
+            tap_code_delay(KC_VOLD, 10);
+        }
+    } else if (index == 1) { /* Second encoder */
+        if (clockwise) {
+            tap_code((is_arrow) ? KC_LEFT : KC_PGUP);
+        } else {
+            tap_code((is_arrow) ? KC_RIGHT : KC_PGDN);
+        }
+    }
+    return false;
 }
